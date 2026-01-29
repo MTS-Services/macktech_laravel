@@ -70,11 +70,11 @@ RUN composer install --no-dev --optimize-autoloader && php artisan wayfinder:gen
 RUN npm install && npm run build
 
 # Laravel Artisan commands
-# Grouping related commands
-# RUN php artisan config:clear && php artisan route:clear && php artisan view:clear \
-#     && php artisan config:cache && php artisan route:cache && php artisan view:cache \
-#     && php artisan migrate --force || true \
-#     && php artisan optimize:clear
+RUN php artisan config:clear && php artisan route:clear && php artisan view:clear \
+    && php artisan config:cache && php artisan route:cache && php artisan view:cache \
+    && php artisan migrate --force || true \
+    && php artisan optimize:clear
+    
 RUN php artisan config:clear \
     && php artisan route:clear \
     && php artisan view:clear \
