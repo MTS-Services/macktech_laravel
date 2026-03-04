@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\Auth\WhenIWorkUserProvider;
 use Carbon\CarbonImmutable;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\ServiceProvider;
@@ -25,7 +27,6 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->configureDefaults();
     }
-
     protected function configureDefaults(): void
     {
         Date::use(CarbonImmutable::class);
@@ -34,14 +35,15 @@ class AppServiceProvider extends ServiceProvider
             app()->isProduction(),
         );
 
-        Password::defaults(fn (): ?Password => app()->isProduction()
-            ? Password::min(12)
+        Password::defaults(
+            fn(): ?Password => app()->isProduction()
+                ? Password::min(12)
                 ->mixedCase()
                 ->letters()
                 ->numbers()
                 ->symbols()
                 ->uncompromised()
-            : null
+                : null
         );
     }
 }
