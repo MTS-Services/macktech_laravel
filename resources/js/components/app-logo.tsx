@@ -1,16 +1,13 @@
-import AppLogoIcon from './app-logo-icon';
+import { cn } from '@/lib/utils';
 
-export default function AppLogo() {
+interface AppLogoProps extends React.ImgHTMLAttributes<HTMLImageElement> {
+    className?: string;
+}
+
+export default function AppLogo({ className, ...props }: AppLogoProps) {
     return (
         <>
-            <div className="flex aspect-square size-8 items-center justify-center rounded-md bg-sidebar-primary text-sidebar-primary-foreground">
-                <AppLogoIcon className="size-5 fill-current text-white dark:text-black" />
-            </div>
-            <div className="ml-1 grid flex-1 text-left text-sm">
-                <span className="mb-0.5 truncate leading-tight font-semibold">
-                    Laravel Starter Kit
-                </span>
-            </div>
+            <img src='/logo.svg' alt="App Logo" className={cn("w-auto max-w-[250px] object-contain", className)} {...props} />
         </>
     );
 }
