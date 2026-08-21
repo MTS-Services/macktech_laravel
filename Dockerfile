@@ -67,6 +67,10 @@ RUN composer install --no-dev --optimize-autoloader && php artisan wayfinder:gen
 RUN npm install && npm run build
 
 # Laravel Artisan commands
+<<<<<<< HEAD
+=======
+
+>>>>>>> 578793ebc7e0b7269d811ea4d55031e91f0e557f
 RUN php artisan config:clear \
     && php artisan route:clear \
     && php artisan view:clear \
